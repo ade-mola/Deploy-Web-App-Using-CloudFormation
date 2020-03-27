@@ -36,8 +36,8 @@ Resources:
           !Sub "${EnvironmentName}-VPCID"
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: 8080
-          ToPort: 8080
+          FromPort: 80
+          ToPort: 80
           CidrIp: 0.0.0.0/0
         - IpProtocol: tcp
           FromPort: 22
@@ -58,10 +58,11 @@ Resources:
           sudo apt-get update -y
           sudo apt-get install unzip awscli -y
           sudo apt-get install apache2 -y 
-          sudo systemctl start apache2.service 
-          cd /var/www/html 
-          aws s3 cp s3://locke-static-project/web-files.zip
-          unzip -o web-files.zip
+          sudo systemctl start apache2.service
+          sudo rm /var/www/html/index.html
+          sudo aws s3 cp s3://locke-udagram-bucket/web-files.zip /var/www/html
+          sudo unzip /var/www/html/web-files.zip -d /var/www/html
+          wget -P /var/www/html https://locke-udagram-bucket.s3-us-west-2.amazonaws.com/index.html
       ImageId: ami-0d1cd67c26f5fca19
       InstanceType: t3.medium
       SecurityGroups:
@@ -102,7 +103,7 @@ Resources:
           Ref: WebAppTargetGroup
       LoadBalancerArn:
           Ref: WebAppLB
-      Port: '80'
+      Port: 80
       Protocol: HTTP
 
   ALBListenerRule:
@@ -125,7 +126,7 @@ Resources:
       HealthCheckProtocol: HTTP
       HealthCheckTimeoutSeconds: 8
       HealthyThresholdCount: 2
-      Port: 8080
+      Port: 80
       Protocol: HTTP
       UnhealthyThresholdCount: 5
       VpcId: 
