@@ -7,5 +7,6 @@ aws cloudformation update-stack \
 --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" \
 --region=us-west-2
 
-
+echo "Waiting for stack update to complete ..."
+aws cloudformation wait stack-update-complete --stack-name $1
 

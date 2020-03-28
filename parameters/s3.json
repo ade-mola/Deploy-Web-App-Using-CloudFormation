@@ -1,0 +1,17 @@
+[{
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "LockeUdagram"
+},
+{
+    "ParameterKey": "S3BucketAppName",
+    "ParameterValue": "locke-udagram-app"
+},
+{
+    "ParameterKey": "S3BucketKeyName",
+    "ParameterValue": "locke-udagram-key"
+},
+{
+    "ParameterKey": "S3BucketLogsName",
+    "ParameterValue": "locke-udagram-logs"
+}
+]

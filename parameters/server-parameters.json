@@ -1,0 +1,18 @@
+[
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "LockeUdagram"
+    },
+    {
+        "ParameterKey": "SourceIP",
+        "ParameterValue": "102.89.0.0/20"
+    },
+    {
+        "ParameterKey": "S3BucketKeyName",
+        "ParameterValue": "locke-udagram-key"
+    },
+    {
+        "ParameterKey": "KeyBastionSSH",
+        "ParameterValue": "udagram"
+    }
+]
